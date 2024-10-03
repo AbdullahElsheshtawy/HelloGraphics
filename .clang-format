@@ -1,0 +1,24 @@
+# Use Microsoft style as the base
+BasedOnStyle: Microsoft
+
+# Set the maximum line length to 120 characters
+ColumnLimit: 120
+
+# Place braces on a new line (Allman style)
+BreakBeforeBraces: Allman
+
+# Align pointer and reference types next to the variable name
+PointerAlignment: Left
+
+# Ensure a space before parentheses in control statements
+SpaceBeforeParens: ControlStatements
+
+# Use tabs for indentation, 4 spaces per tab
+IndentWidth: 4
+UseTab: ForIndentation
+
+# Disable sorting of includes
+SortIncludes: true
+
+# Allow short functions to be on a single line (only for inline)
+AllowShortFunctionsOnASingleLine: InlineOnly
