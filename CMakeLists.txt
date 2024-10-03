@@ -9,5 +9,5 @@ set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 project ("HelloGraphics")
 
 # Add source to this project's executable.
-add_executable (HelloGraphics  "src/main.cpp" "src/Window.cpp" "include/Window.h")
+add_executable (HelloGraphics  WIN32 "src/main.cpp" "src/Window.cpp" "include/Window.h")
 include_directories("include")
