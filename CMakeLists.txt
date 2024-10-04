@@ -9,6 +9,6 @@ set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 project (HelloGraphics)
 
 # Add source to this project's executable.
-add_executable (HelloGraphics  WIN32 src/main.cpp src/Window.cpp)
+add_executable (HelloGraphics  WIN32 src/main.cpp src/Window.cpp  src/DeviceResources.cpp)
 target_link_libraries(HelloGraphics d3d11)
 include_directories("include/")
