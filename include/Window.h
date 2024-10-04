@@ -2,7 +2,7 @@
 
 class Window
 {
-  public:
+public:
 	Window(const int width, const int height, const char* windowName);
 	Window(const int width, const int height, const LPCSTR windowName, const char* className);
 	const HWND& GetHandle() const noexcept { return m_windowHandle; }
@@ -11,7 +11,7 @@ class Window
 	const int GetResult() const noexcept { return static_cast<int>(m_msg.lParam); }
 	~Window();
 
-  private:
+private:
 	static LRESULT CALLBACK HandleMsgSetup(HWND handle, UINT msg, WPARAM wParam, LPARAM lParam);
 	static LRESULT CALLBACK HandleMsgThunk(HWND handle, UINT msg, WPARAM wParam, LPARAM lParam);
 	LRESULT CALLBACK HandleMsg(HWND handle, UINT msg, WPARAM wParam, LPARAM lParam);
