@@ -1,23 +1,32 @@
 #include "Window.h"
 
+
 Window::Window(const int width, const int height, const char* windowName)
-	: m_width{ width }, m_height{ height }, m_windowName{ windowName }, m_msg{}, m_isRunning{ true }
+	: m_windowName{ windowName }, m_msg{}, m_isRunning{ true }
 {
 	m_wc = { .style = CS_OWNDC, .lpfnWndProc = Window::HandleMsgSetup, .hInstance = nullptr, .lpszClassName = "Winow" };
 	RegisterClass(&m_wc);
 	m_windowHandle = CreateWindowExA(0, m_wc.lpszClassName, m_windowName, WS_TILEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-		m_width, m_height, nullptr, nullptr, nullptr, this);
+		width, height, nullptr, nullptr, nullptr, this);
+
+
+	InitDirectX11();
 	ShowWindow(m_windowHandle, SW_SHOWDEFAULT);
 }
 
 Window::Window(const int width, const int height, const LPCSTR windowName, const char* className)
-	: m_width{ width }, m_height{ height }, m_windowName{ windowName }, m_msg{}, m_isRunning{ true }
+	: m_windowName{ windowName }, m_msg{}, m_isRunning{ true }
 {
 	m_wc = { .style = CS_DBLCLKS, .lpfnWndProc = Window::HandleMsgSetup, .hInstance = nullptr, .lpszClassName = className };
 	RegisterClass(&m_wc);
 	m_windowHandle = CreateWindowExA(0, m_wc.lpszClassName, m_windowName, WS_TILEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-		m_width, m_height, nullptr, nullptr, nullptr, this);
+		width, height, nullptr, nullptr, nullptr, this);
 	ShowWindow(m_windowHandle, SW_SHOWDEFAULT);
+}
+
+void Window::InitDirectX11()
+{
+	m_dr.CreateDeviceResources(m_windowHandle);
 }
 
 void Window::Update()
@@ -27,6 +36,7 @@ void Window::Update()
 	{
 		TranslateMessage(&m_msg);
 		DispatchMessage(&m_msg);
+		m_dr.Present();
 	}
 }
 
