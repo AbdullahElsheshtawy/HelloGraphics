@@ -20,6 +20,7 @@ public:
 	HRESULT ReleaseBackBuffer();
 	HRESULT GoFullScreen();
 	HRESULT GoWindowed();
+	const bool IsFullScreen() const { return m_isFullScreen; }
 
 	const float GetAspectRatio() const noexcept;
 
@@ -34,7 +35,8 @@ public:
 
 
 private:
-	//-----------------------------------------------------------------------------
+	bool m_isFullScreen = false;
+//-----------------------------------------------------------------------------
 // Direct3D device
 //-----------------------------------------------------------------------------
 	Microsoft::WRL::ComPtr<ID3D11Device>        m_pd3dDevice;

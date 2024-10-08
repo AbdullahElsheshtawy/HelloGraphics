@@ -298,7 +298,7 @@ HRESULT DeviceResources::GoFullScreen()
 	// Then we can recreate the back buffer, depth buffer, and so on.
 	hr = ConfigureBackBuffer();
 
-
+	m_isFullScreen = true;
 	return hr;
 }
 
@@ -327,6 +327,7 @@ HRESULT DeviceResources::GoWindowed()
 	// Then we can recreate the back buffer, depth buffer, and so on.
 	hr = ConfigureBackBuffer();
 
+	m_isFullScreen = false;
 	return hr;
 }
 

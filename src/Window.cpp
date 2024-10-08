@@ -79,6 +79,14 @@ LRESULT Window::HandleMsg(HWND handle, UINT msg, WPARAM wParam, LPARAM lParam)
 		PostQuitMessage(2);
 		m_isRunning = false;
 		break;
+
+
+	case WM_KEYDOWN:
+		switch (wParam)
+		{
+		case VK_F11:
+			m_dr.IsFullScreen() ? m_dr.GoWindowed() : m_dr.GoFullScreen();
+		}
 	}
 	return DefWindowProc(handle, msg, wParam, lParam);
 }
